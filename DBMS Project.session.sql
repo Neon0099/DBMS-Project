@@ -63,7 +63,9 @@ CREATE TABLE Transaction(
 CREATE TABLE AuditLog (
     Transaction_id INT,
     Transaction_date DATE,
-    Amount Decimal(10,2)
+    Amount Decimal(10,2),
+    Account_from INT,
+    Account_to INT
 );
 
 
@@ -153,12 +155,17 @@ VALUES
 (10, 'Joyce', 'Taylor', 'Assistant Manager', '0123456789', '2002-10-10', 'Assistant Manager', '2020-10-10', 10);
 
 
+INSERT INTO Transaction(Transaction_id,Transaction_type,Amount,Transaction_date,Account_from,Account_to)
+VALUES
+(1,'Checking',500,'2024-04-19',1007,1003);
+
 Select * from Branch;
 SELECT * FROM Customer;
 SELECT * FROM Address;
 SELECT * FROM Account;
 SELECT * FROM Loan;
 SELECT * FROM Employee;
+SELECT * FROM auditlog;
 
 
 
@@ -186,18 +193,28 @@ BEGIN
    SELECT * FROM Customer WHERE Customer_id IN (SELECT Customer_id FROM Account WHERE Branch_id = branch_id);
 END;
 
+
+
 CREATE TRIGGER transaction_audit_log 
 AFTER INSERT ON Transaction
 FOR EACH ROW
-INSERT INTO AuditLog (Transaction_id, Transaction_date, Amount)
-VALUES (NEW.Transaction_id, NEW.Transaction_date, NEW.Amount);
+INSERT INTO AuditLog (Transaction_id, Transaction_date, Amount, Account_from, Account_to)
+VALUES (NEW.Transaction_id, NEW.Transaction_date, NEW.Amount, NEW.Account_from, NEW.Account_to);
+
 
 CREATE TRIGGER update_balance
 AFTER INSERT ON Transaction
 FOR EACH ROW
-UPDATE Account
-SET Balance = Balance - NEW.Amount
-WHERE Account_no = NEW.Account_from;
+BEGIN
+   UPDATE Account
+   SET Balance = Balance - NEW.Amount
+   WHERE Account_no = NEW.Account_from;
+
+   UPDATE Account
+   SET Balance = Balance + NEW.Amount
+   WHERE Account_no = NEW.Account_to;
+END;
+
 
 CREATE TRIGGER before_account_delete
 BEFORE DELETE
