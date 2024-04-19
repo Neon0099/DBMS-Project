@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
-function TransactionTable() {
-  const [data, setData] = useState([]);
+// No transactions as of now.
 
+const AccountsTable = () => {
+  const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8081/transaction")
+    fetch("http://localhost:8081/account")
       .then((res) => res.json())
       .then((data) => {
         const newData = data.map((item, index) => ({ id: index, ...item }));
@@ -15,14 +16,12 @@ function TransactionTable() {
   }, []);
 
   const columns = [
-    { field: "Transaction_id", headerName: "ID", width: 70 },
-    { field: "Transaction_type", headerName: "Transaction Type", width: 150 },
-    { field: "Amount", headerName: "Amount", width: 150 },
-    { field: "Transaction_date", headerName: "Transaction Date", width: 150 },
-    { field: "Account_from", headerName: "From", width: 150 },
-    { field: "Account_to", headerName: "To", width: 150 },
+    { field: "Account_no", headerName: "Account No.", width: 70 },
+    { field: "Balance", headerName: "Balance", width: 150 },
+    { field: "Account_type", headerName: "Account Type", width: 150 },
+    { field: "Branch_id", headerName: "Branch", width: 150 },
+    { field: "Customer_id", headerName: "Customer", width: 150 },
   ];
-
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -35,6 +34,6 @@ function TransactionTable() {
       />
     </div>
   );
-}
+};
 
-export default TransactionTable;
+export default AccountsTable;

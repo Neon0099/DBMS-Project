@@ -91,3 +91,16 @@ app.post('/branch', (req, res) => {
     }
   });
 });
+
+app.post('/transaction', (req, res) => {
+  const { Transaction_type, Amount, Account_from, Account_to } = req.body;
+  const sql = 'INSERT INTO Transaction (Transaction_type, Amount, Transaction_date, Account_from, Account_to) VALUES (?, ?, NOW(), ?, ?)';
+  db.query(sql, [Transaction_type, Amount, Account_from, Account_to], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error adding transaction');
+    } else {
+      res.status(200).send('Transaction added successfully');
+    }
+  });
+});

@@ -31,7 +31,7 @@ function BranchTable() {
         pageSizeOptions={[5]}
         rowsPerPageOptions={[5]}
       />
-      <BranchForm />
+      {/* <BranchForm /> */}
     </div>
   );
 }
