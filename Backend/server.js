@@ -12,7 +12,7 @@ const db = mysql.createConnection({
   user: "root",
   password: "toor",
   database: "project",
-});
+}); 
 db.connect(function (err) {
   if (err) {
     console.error("error connecting: " + err.stack);
