@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import BranchForm from "./BranchForm";
+import Box from '@mui/material/Box';
 
 function BranchTable() {
   const [data, setData] = useState([]);
@@ -16,13 +17,21 @@ function BranchTable() {
   }, []);
 
   const columns = [
-    { field: "Branch_id", headerName: "ID", width: 70 },
-    { field: "Branch_name", headerName: "Branch Name", width: 150 },
-    { field: "Location", headerName: "Branch Location", width: 150 },
+    { field: "Branch_id", headerName: "ID", width: 500 },
+    { field: "Branch_name", headerName: "Branch Name", width: 600 },
+    { field: "Location", headerName: "Branch Location", width: 300},
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <Box
+    sx={{
+      height: 400,
+      width: '200%',
+      '& .super-app-theme--header': {
+        backgroundColor: 'rgba(255, 7, 0, 0.55)',
+      },
+    }}
+  >
       <DataGrid
         rows={data}
         columns={columns}
@@ -30,9 +39,10 @@ function BranchTable() {
         pageSize={5}
         pageSizeOptions={[5]}
         rowsPerPageOptions={[5]}
+        
       />
       {/* <BranchForm /> */}
-    </div>
+      </Box>
   );
 }
 
