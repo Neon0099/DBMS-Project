@@ -1,22 +1,33 @@
-// import React, { useEffect, useState } from "react";
-// import { DataGrid } from "@mui/x-data-grid";
-import BranchForm from "./BranchForm";
-import BranchTable from "./BranchTable";
-import TransactionTable from "./TransactionTable";
-import Customer from "./Customer";
-import AccountsTable from "./AccountsTable";
-import TransactionForm from "./TransactionForm";
+//import React from "react";
+import Navbar from "./navbar"; // assuming you have a Navbar component
+//import Routes1 from "./Routes";
 
+import BranchTablePage from "./pages/BranchTablePage";
+import TransactionTablePage from "./pages/TransactionTablePage";
+import CustomerPage from "./pages/CustomerPage";
+import AccountsTablePage from "./pages/AccountsTablePage";
+import { BrowserRouter as Router, Routes, Route,Link} from "react-router-dom";
 function App() {
   return (
     <div>
-      <BranchTable />
-      <BranchForm />
-     <TransactionTable />
-     <TransactionForm />
-      <Customer />
-      <AccountsTable />
       
+      <Navbar/>
+      <Router>
+      <Routes>
+        <Route path="/branches" element = {<BranchTablePage />}>
+          
+        </Route>
+        <Route path="/transactions" element = {<TransactionTablePage />}>
+          
+        </Route>
+        <Route path="/customers" element = {<CustomerPage />}>
+          
+        </Route>
+        <Route path="/accounts" element = {<AccountsTablePage />}>
+          
+        </Route>
+      </Routes>
+    </Router>
     </div>
   );
 }
