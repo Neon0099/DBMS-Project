@@ -15,15 +15,17 @@ function TransactionTable() {
   }, []);
 
   const columns = [
-    { field: "Transaction_id", headerName: "ID", width: 70 },
-    { field: "Transaction_type", headerName: "Transaction Type", width: 150 },
-    { field: "Amount", headerName: "Amount", width: 150 },
-    { field: "Transaction_date", headerName: "Transaction Date", width: 150 },
-    { field: "Account_from", headerName: "From", width: 150 },
-    { field: "Account_to", headerName: "To", width: 150 },
+    { field: "Transaction_id", headerName: "ID", width: 200},
+    { field: "Transaction_type", headerName: "Transaction Type", width:300 },
+    { field: "Amount", headerName: "Amount", width: 250 },
+    { field: "Transaction_date", headerName: "Transaction Date", width:300 },
+    { field: "Account_from", headerName: "From", width: 200 },
+    { field: "Account_to", headerName: "To", width: 200 },
   ];
 
   return (
+    <div>
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Transaction Table</h2>
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={data}
@@ -33,6 +35,7 @@ function TransactionTable() {
         pageSizeOptions={[5]}
         rowsPerPageOptions={[5]}
       />
+    </div>
     </div>
   );
 }

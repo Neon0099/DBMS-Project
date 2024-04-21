@@ -1,3 +1,4 @@
+import { ClassNames } from '@emotion/react';
 import React, { useState } from 'react';
 
 function BranchForm() {
@@ -28,7 +29,10 @@ function BranchForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white shadow-md rounded-lg">
+    < div className = "mt-4">
+    
+    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white shadow-md rounded-lg  ">
+    <h2 className='block mb-2 text-medium font-medium text-gray-700 pb-4'> Branch Insertion form</h2>
     <div className="mb-4">
       <label htmlFor="branchId" className="block mb-2 text-sm font-medium text-gray-700">Branch ID:</label>
       <input
@@ -69,6 +73,7 @@ function BranchForm() {
       Add Branch
     </button>
   </form>
+  </div>
   
 
   );
