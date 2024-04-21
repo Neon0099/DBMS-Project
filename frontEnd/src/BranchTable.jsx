@@ -18,8 +18,8 @@ function BranchTable() {
 
   const columns = [
     { field: "Branch_id", headerName: "ID", width: 500 },
-    { field: "Branch_name", headerName: "Branch Name", width: 600 },
-    { field: "Location", headerName: "Branch Location", width: 300},
+    { field: "Branch_name", headerName: "Branch Name", width: 500 },
+    { field: "Location", headerName: "Branch Location", width: 200},
   ];
 
   return (
@@ -28,7 +28,7 @@ function BranchTable() {
     <Box
     sx={{
       height: 400,
-      width: '200%',
+      width: '100%',
       '& .super-app-theme--header': {
         backgroundColor: 'rgba(255, 7, 0, 0.55)',
       },

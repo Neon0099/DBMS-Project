@@ -16,10 +16,10 @@ const Customer = () => {
   }, []);
 
   const columns = [
-    { field: "Customer_id", headerName: "ID", width: 100 },
-    { field: "First_name", headerName: "First Name", width: 250 },
-    { field: "Last_name", headerName: "Last Name", width: 250 },
-    { field: "DOB", headerName: "Date Of Birth", width: 300},
+    { field: "Customer_id", headerName: "ID", width: 75 },
+    { field: "First_name", headerName: "First Name", width: 110 },
+    { field: "Last_name", headerName: "Last Name", width: 110 },
+    { field: "DOB", headerName: "Date Of Birth", width: 250},
     { field: "Address", headerName: "Address", width: 400 },
     { field: "Mobile_no", headerName: "Mobile Number", width: 150 },
   ];

@@ -167,32 +167,30 @@ SELECT * FROM Loan;
 SELECT * FROM Employee;
 SELECT * FROM auditlog;
 
+DROP PROCEDURE IF EXISTS GetCustomerLoans;
 
 
-CREATE PROCEDURE GetAccountBalance(IN account_no INT)
+CREATE PROCEDURE GetAccountBalance(IN p_account_no INT)
 BEGIN
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        RESIGNAL; 
-    END;
-
-    START TRANSACTION;
-    SELECT Balance FROM Account WHERE Account_no = account_no;
-    COMMIT;
-END ;
+    SELECT Balance FROM Account WHERE Account_no = p_account_no;
+END;
+CALL GetAccountBalance(1003);
 
 
-CREATE PROCEDURE GetCustomerLoans(IN customer_id INT)
+
+CREATE PROCEDURE GetCustomerLoans(IN p_customer_id INT)
 BEGIN
-   SELECT * FROM Loan WHERE Customer_id = customer_id;
+   SELECT Amount FROM Loan WHERE Customer_id = p_customer_id;
 END;
 
-CREATE PROCEDURE GetBranchCustomers(IN branch_id INT)
+CALL GetCustomerLoans(2); 
+
+CREATE PROCEDURE GetCustomerBranch(IN p_customer_id INT)
 BEGIN
-   SELECT * FROM Customer WHERE Customer_id IN (SELECT Customer_id FROM Account WHERE Branch_id = branch_id);
+   SELECT Branch_id FROM Account WHERE Customer_id = p_customer_id;
 END;
 
+CALL GetCustomerBranch(2);
 
 
 CREATE TRIGGER transaction_audit_log 
@@ -234,3 +232,7 @@ BEGIN
    INSERT INTO Transaction(Transaction_type, Amount, Transaction_date, Account_from, Account_to)
    VALUES ('Deposit', NEW.Balance, NOW(), NULL, NEW.Account_no);
 END;
+
+
+
+-- 3 TRIGGER 2 pro

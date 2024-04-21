@@ -17,10 +17,10 @@ const AccountsTable = () => {
   }, []);
 
   const columns = [
-    { field: "Account_no", headerName: "Account No.", width: 300 },
-    { field: "Balance", headerName: "Balance", width: 300 },
-    { field: "Account_type", headerName: "Account Type", width:300 },
-    { field: "Branch_id", headerName: "Branch", width: 300},
+    { field: "Account_no", headerName: "Account No.", width: 200 },
+    { field: "Balance", headerName: "Balance", width: 200 },
+    { field: "Account_type", headerName: "Account Type", width:200 },
+    { field: "Branch_id", headerName: "Branch", width: 200},
     { field: "Customer_id", headerName: "Customer", width: 200},
   ];
   return (

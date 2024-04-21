@@ -2,14 +2,28 @@ import React, { useState } from 'react';
 
 function AccountBalanceForm() {
   const [accountId, setAccountId] = useState('');
+  const [balance, setBalance] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
+    try {
+      const response = await fetch(`http://localhost:8081/account/balance/${accountId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setBalance(data.balance);
+      } else if (response.status === 404) {
+        alert('Account not found. Please check the account number and try again.');
+      } else {
+        alert('Error getting account balance');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+  
 
   return (
-    <div className="my-8"> {/* Added margin top and bottom */}
+    <div className="my-8">
       <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white shadow-md rounded-lg">
         <h2 className="block mb-2 text-medium font-medium text-gray-700 pb-4">Check Account Balance</h2>
         <div className="mb-4">
@@ -29,6 +43,12 @@ function AccountBalanceForm() {
         >
           Check Balance
         </button>
+        {balance && (
+          <div className="mt-4">
+            <h3 className="text-lg font-medium text-gray-700">Balance:</h3>
+            <p className="text-lg text-gray-900">{balance}</p>
+          </div>
+        )}
       </form>
     </div>
   );
