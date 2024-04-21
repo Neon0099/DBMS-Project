@@ -23,6 +23,8 @@ function BranchTable() {
   ];
 
   return (
+    <div>
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Branch Table</h2>
     <Box
     sx={{
       height: 400,
@@ -43,6 +45,7 @@ function BranchTable() {
       />
       {/* <BranchForm /> */}
       </Box>
+      </div>
   );
 }
 

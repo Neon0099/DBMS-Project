@@ -29,25 +29,61 @@ function TransactionForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Transaction Type:
-        <input type="text" value={transactionType} onChange={(e) => setTransactionType(e.target.value)} required />
-      </label>
-      <label>
-        Amount:
-        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} required />
-      </label>
-      <label>
-        Account From:
-        <input type="number" value={accountFrom} onChange={(e) => setAccountFrom(e.target.value)} required />
-      </label>
-      <label>
-        Account To:
-        <input type="number" value={accountTo} onChange={(e) => setAccountTo(e.target.value)} required />
-      </label>
-      <button type="submit">Add Transaction</button>
-    </form>
+      <div className="my-8"> {/* Added margin top and bottom */}
+        <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white shadow-md rounded-lg">
+          <h2 className="block mb-2 text-medium font-medium text-gray-700 pb-4">Transaction Form</h2>
+          <div className="mb-4">
+            <label htmlFor="transactionType" className="block mb-2 text-sm font-medium text-gray-700">Transaction Type:</label>
+            <input
+              id="transactionType"
+              type="text"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              value={transactionType}
+              onChange={(e) => setTransactionType(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="amount" className="block mb-2 text-sm font-medium text-gray-700">Amount:</label>
+            <input
+              id="amount"
+              type="number"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="accountFrom" className="block mb-2 text-sm font-medium text-gray-700">Account From:</label>
+            <input
+              id="accountFrom"
+              type="number"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              value={accountFrom}
+              onChange={(e) => setAccountFrom(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="accountTo" className="block mb-2 text-sm font-medium text-gray-700">Account To:</label>
+            <input
+              id="accountTo"
+              type="number"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              value={accountTo}
+              onChange={(e) => setAccountTo(e.target.value)}
+              required
+            />
+          </div>
+          <button
+            className="w-full px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+            type="submit"
+          >
+            Add Transaction
+          </button>
+        </form>
+      </div>
   );
 }
 

@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 // No transactions as of now.
 
 const AccountsTable = () => {
+  
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8081/account")
@@ -16,13 +17,15 @@ const AccountsTable = () => {
   }, []);
 
   const columns = [
-    { field: "Account_no", headerName: "Account No.", width: 70 },
-    { field: "Balance", headerName: "Balance", width: 150 },
-    { field: "Account_type", headerName: "Account Type", width: 150 },
-    { field: "Branch_id", headerName: "Branch", width: 150 },
-    { field: "Customer_id", headerName: "Customer", width: 150 },
+    { field: "Account_no", headerName: "Account No.", width: 300 },
+    { field: "Balance", headerName: "Balance", width: 300 },
+    { field: "Account_type", headerName: "Account Type", width:300 },
+    { field: "Branch_id", headerName: "Branch", width: 300},
+    { field: "Customer_id", headerName: "Customer", width: 200},
   ];
   return (
+    <div>
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Accounts Table</h2>
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={data}
@@ -32,6 +35,7 @@ const AccountsTable = () => {
         pageSizeOptions={[5]}
         rowsPerPageOptions={[5]}
       />
+    </div>
     </div>
   );
 };

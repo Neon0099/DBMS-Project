@@ -16,14 +16,16 @@ const Customer = () => {
   }, []);
 
   const columns = [
-    { field: "Customer_id", headerName: "ID", width: 70 },
-    { field: "First_name", headerName: "First Name", width: 150 },
-    { field: "Last_name", headerName: "Last Name", width: 150 },
-    { field: "DOB", headerName: "Date Of Birth", width: 150 },
-    { field: "Address", headerName: "Address", width: 150 },
+    { field: "Customer_id", headerName: "ID", width: 100 },
+    { field: "First_name", headerName: "First Name", width: 250 },
+    { field: "Last_name", headerName: "Last Name", width: 250 },
+    { field: "DOB", headerName: "Date Of Birth", width: 300},
+    { field: "Address", headerName: "Address", width: 400 },
     { field: "Mobile_no", headerName: "Mobile Number", width: 150 },
   ];
   return (
+    <div>
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Customer Table</h2>
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={data}
@@ -34,6 +36,7 @@ const Customer = () => {
         rowsPerPageOptions={[5]}
       />
       {/* <BranchForm /> */}
+    </div>
     </div>
   );
 };
